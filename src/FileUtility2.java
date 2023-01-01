@@ -112,6 +112,26 @@ public class FileUtility2 {
 //        fileInputStream.read(bytesArray);
 //        return bytesArray;
 //    }
+
+    public static Object readFileDeserialize(String name) {
+        Object obj = null;
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(name))) {
+            obj = in.readObject();
+        } finally {
+            return obj;
+        }
+    }
+
+    public static boolean writeObjectToFile(Serializable object, String name) throws RuntimeException {
+        try (FileOutputStream fout = new FileOutputStream(name);
+             ObjectOutputStream oos = new ObjectOutputStream(fout)) {
+            oos.writeObject(object);
+            return true;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 }
 
 
