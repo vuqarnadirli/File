@@ -2,11 +2,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        System.out.println("Hello world!");
 
-        String fileName="Cux.docx";
-        String text = "Cux";
+        byte[] data= FileUtility2.readBytes("test.jpg");
 
-        FileUtility2.writeIntoFile(fileName,text);
+        FileUtility2.writeBytes("test2.jpg",data);
+
+
     }
 }
